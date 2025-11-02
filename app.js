@@ -417,3 +417,27 @@ function calculatePrice() {
     
     showMessage('വില കണക്കാക്കി / Price calculated successfully!', 'success');
 }
+function toggleInstructions() {
+  // Shows/hides the instructions box
+  var x = document.getElementById("instructions-text");
+  x.style.display = (x.style.display === "block") ? "none" : "block";
+}
+
+// Calculator logic with location-based price
+function updatePrice() {
+  var qty = parseInt(document.getElementById("quantityCalc").value) || 0;
+  var perStone = parseInt(document.getElementById("delivery-distance").value) || 0;
+
+  if (!qty || !perStone) {
+    document.getElementById('priceResult').style.display = "none";
+    return;
+  }
+  var total = qty * perStone;
+
+  document.getElementById("resultQuantity").textContent = qty + " pieces";
+  document.getElementById("resultUnitPrice").textContent = "₹" + perStone;
+  document.getElementById("resultTotalPrice").textContent = "₹" + total.toLocaleString();
+
+  document.getElementById('priceResult').style.display = "block";
+}
+

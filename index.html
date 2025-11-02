@@ -30,6 +30,7 @@
                 <a href="#calculator" class="nav-link">Price Calculator</a>
                 <a href="#equipment" class="nav-link">Equipment</a>
                 <a href="#about" class="nav-link">About</a>
+                <a href="#other-services" class="nav-link">Other Services</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
             <button class="register-btn" onclick="scrollToSection('registration')">
@@ -167,48 +168,66 @@
     </section>
 
     <!-- Stone Price Calculator Section -->
+    <!-- Stone Price Calculator Section -->
     <section id="calculator" class="calculator">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Stone Price Calculator</h2>
+                <h3 class="section-subtitle">കല്ലിന്റെ വില കണക്കാക്കുക</h3>
             </div>
-            
+
+        <!-- Instruction Toggle Button and Box -->
+            <div class="calc-instructions">
+                <button type="button" class="instructions-btn" onclick="toggleInstructions()">
+                    ℹ️ How to Use / ഉപയോഗ നിർദേശങ്ങൾ
+                </button>
+                <div id="instructions-text" class="instructions-text">
+                    <ul>
+                        <li>Enter the quantity of stones needed.</li>
+                        <li>Select your delivery location range to get accurate pricing. <br><span class="malayalam">നിങ്ങളുടെ അഡ്രസിന് സമീപമുള്ള ഡെലിവറി ലോക്കേഷൻ തിരഞ്ഞെടുക്കുക.</span></li>
+                        <li>Click "Calculate Price" to see the total.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- The main calculator form -->
             <div class="calculator-container animate-on-scroll">
-                <div class="calculator-form">
-                    <div class="price-info">
-                        <h4>ചെങ്കല്ല് വില (Price): <span class="price-highlight">₹35 per piece</span></h4>
-                    </div>
-                    
+                <form>
                     <div class="form-group">
-                        <label for="quantityCalc" class="form-label">അളവ് (Quantity) *</label>
-                        <input type="number" id="quantityCalc" class="form-control" min="1" placeholder="എത്ര കല്ല് വേണം? / How many stones?">
+                        <label for="delivery-distance">Delivery Location:</label>
+                        <select id="delivery-distance" class="form-control">
+                            <option value="30">Within 5 km (₹30 per stone)</option>
+                            <option value="35">Within 7 km (₹35 per stone)</option>
+                            <option value="40">Within 10 km (₹40 per stone)</option>
+                            <option value="45">Within 15 km (₹45 per stone)</option>
+                        </select>
                     </div>
-                    
-                    <button type="button" class="btn btn--primary" onclick="calculatePrice()">
-                        വില കണക്കാക്കുക (Calculate Price)
-                    </button>
-                    
-                    <div id="priceResult" class="price-result" style="display: none;">
-                        <div class="result-card">
-                            <h4>വില വിശദാംശങ്ങൾ (Price Details)</h4>
-                            <div class="result-row">
-                                <span>Quantity:</span>
-                                <span id="resultQuantity"></span>
-                            </div>
-                            <div class="result-row">
-                                <span>Price per stone:</span>
-                                <span>₹35</span>
-                            </div>
-                            <div class="result-row total">
-                                <span>മൊത്തം വില (Total Price):</span>
-                                <span id="resultTotalPrice"></span>
-                            </div>
+                    <div class="form-group">
+                        <label for="quantityCalc" class="form-label">Quantity/എണ്ണം</label>
+                        <input type="number" id="quantityCalc" class="form-control" min="1" placeholder="How many stones?" required>
+                    </div>
+                    <button type="button" class="btn btn--primary btn--full-width" onclick="updatePrice()">Calculate Price</button>
+                </form>
+
+                <!-- Results are shown here -->
+                <div id="priceResult" class="price-result" style="display:none;">
+                    <div class="result-card">
+                        <h4>വില വിശദാംശങ്ങൾ (Price Details)</h4>
+                        <div class="result-row">
+                            <span>Quantity:</span> <span id="resultQuantity"></span>
+                        </div>
+                        <div class="result-row">
+                            <span>Price per stone:</span> <span id="resultUnitPrice"></span>
+                        </div>
+                        <div class="result-row total">
+                            <span>വില (Total Price):</span> <span id="resultTotalPrice"></span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 
 
 
@@ -323,6 +342,34 @@
             </div>
         </div>
     </section>
+
+    <!-- Other Services Section -->
+    <section id="other-services" class="other-services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Other Services</h2>
+                <h3 class="section-subtitle">ഞങ്ങളുടെ മറ്റ് സേവനങ്ങൾ</h3>
+            </div>
+            <div class="services-grid animate-on-scroll">
+                <div class="service-card">
+                    <img src="images/mini_exc.jpg" alt="Mini Excavator" class="service-image">
+                    <h4>Mini Excavator Service</h4>
+                    <p>Professional mini excavator rentals for a variety of earthwork and construction tasks.</p>
+                </div>
+                <div class="service-card">
+                    <img src="images/jcb_img.jpg" alt="JCB" class="service-image">
+                    <h4>JCB Service</h4>
+                    <p>Reliable JCB machinery services for heavy lifting and site preparation.</p>
+                </div>
+                <div class="service-card">
+                    <img src="images/tipper.jpg" alt="Tipper" class="service-image">
+                    <h4>Tipper Service</h4>
+                    <p>Efficient tipper truck services for transporting materials safely and quickly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- About Section -->
     <section id="about" class="about">
